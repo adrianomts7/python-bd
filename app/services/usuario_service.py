@@ -26,3 +26,34 @@ class UsuarioService:
 
     def listar_todos_usuarios(self):
         return self.repository.listar_usuarios()    
+        
+    def procurar_usuario(self,email: str):
+        try:
+            cadastrado = self.repository.pesquisar_usuario_por_email(email=email)
+
+            if cadastrado:
+                print("Usuario Encontrado com sucesso")
+                print(f"{cadastrado.nome} - {cadastrado.email}")
+        
+        except TypeError as erro:
+            print(f"Erro ao procurar usuario: {erro}")
+            
+        except Exception as erro:
+            print(f"Erro inesperado: {erro}")
+            
+    def atualizar_usuario(self, email: str,nomeAtualizado: str, emailAtualizado: str, senhaAtualizada: str):
+        try:
+            usuario = self.repository.pesquisar_usuario_por_email(email=email)
+                
+            if usuario:
+                usuario.nome = nomeAtualizado
+                usuario.email = emailAtualizado
+                usuario.senha = senhaAtualizada
+                print("Usuario Atualizado com sucesso!")
+                self.repository.session.commit()
+                
+        except TypeError as erro:
+            print(f"Erro ao tentar atualizar usuario: {erro}")
+            
+    def excluir_usuario(self, email: str):
+        pass
