@@ -8,6 +8,19 @@ def main():
     repository = UsuarioRepository(session)
     service = UsuarioService(repository)
 
+    do{
+        print("\n=== SENAI SOLUTION ===")
+        print("\n 1 - Adiconar Usuario: ")
+        print("\n 2 - Pesquisar um usuario")
+        print("\n 3 - Atualizar dados de um usuario")
+        print("\n 4 - Excluir um usuario")
+        print("\n 5 - Exibit todos os usuarios cadastrados")
+        opcao = str(input("Digite a opção que deseja: "))
+        
+        
+
+    }while()
+
     # Solicitando dados do usuario
     print("\nAdicionando usuario: ")
     nome = input("Digite o nome do usuario: ")
