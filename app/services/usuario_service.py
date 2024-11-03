@@ -41,7 +41,7 @@ class UsuarioService:
         except Exception as erro:
             print(f"Erro inesperado: {erro}")
             
-    def atualizar_usuario(self, email: str,nomeAtualizado: str, emailAtualizado: str, senhaAtualizada: str):
+    def atualizar_usuario(self,email: str,nomeAtualizado: str, emailAtualizado: str, senhaAtualizada: str):
         try:
             usuario = self.repository.pesquisar_usuario_por_email(email=email)
                 
@@ -55,5 +55,19 @@ class UsuarioService:
         except TypeError as erro:
             print(f"Erro ao tentar atualizar usuario: {erro}")
             
-    def excluir_usuario(self, email: str):
-        pass
+    def excluir_usuario(self,email: str):
+        try:
+            cadastrado = self.repository.pesquisar_usuario_por_email(email=email)
+            
+            if not cadastrado:
+                print("Usuario não encontrado")
+                return    
+            
+            self.repository.excluir_usuario(usuario=cadastrado)
+            print("Usuario Excluido com sucesso!")
+            
+        except TypeError as erro:
+            print(f"Erro ao apagar usuario: {erro}")
+            
+        except Exception as erro:
+            print(f"Ocorreu um erro inesperado: {erro}")

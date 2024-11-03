@@ -9,8 +9,7 @@ def main():
     service = UsuarioService(repository)
 
     while True:
-        os.system("cls || clear")
-        print(" === SENAI SOLUTION ===")
+        print("\n === SENAI SOLUTION ===")
         print(" 1 - Adiconar Usuario ")
         print(" 2 - Pesquisar um usuario")
         print(" 3 - Atualizar dados de um usuario")
@@ -33,33 +32,50 @@ def main():
                 
                 service.criar_usuario(nome=nome, email=email, senha=senha)  
                 
-                break
+                continue
             
             case 2:
                 os.system("cls || clear")
                 
-                email = input("Digite o email do usuario que deseja procurar: ")
-                service.procurar_usuario(email=email)
+                emailProcurar = input("Digite o email do usuario que deseja procurar: ")
+                service.procurar_usuario(email=emailProcurar)
                 
-                break
+                continue
                 
             case 3:
                 os.system("clear || cls")
                 
-                email = input("Digite o nome do usuario que deseja atualizar: ")
-                nomeAtualizado = input("Nome atualizado do usuario: ")
-                emailAtualizado = input("Digite o email atualizado do usuario: ")
-                senhaAtualizado = input("Digite a senha atualizada do usuario: ")
+                emailUsuario = input("Digite o email do usuario que irá ser atualizado: ")
+                nome = input("Nome atualizado do usuario: ")
+                email = input("Digite o email atualizado do usuario: ")
+                senha = input("Digite a senha atualizada do usuario: ")
                 
-                service.atualizar_usuario(email=email,nomeAtualizado=nomeAtualizado, emailAtualizado=emailAtualizado, senhaAtualizada=senhaAtualizado)
+                service.atualizar_usuario(email=emailUsuario,nomeAtualizado=nome, emailAtualizado=email, senhaAtualizada=senha)
                 
+                continue
+            
+            case 4:
+                os.system("clear || cls")
+                
+                email = input("Digite o email do usuario que vai apagar: ")
+    
+                service.excluir_usuario(email=email)
+                
+                continue
+            
+            case 5:
+                os.system("cls || clear")
+                
+                lista_usuarios = service.listar_todos_usuarios()
+                for usuario in lista_usuarios:
+                    print(f"\nNome: {usuario.nome}  \nemail: {usuario.email}  \nsenha: {usuario.senha}")
+                
+                continue
+            
+            case 0:
+                os.system("cls || clear")
+                print("Finalizando sistema")
                 break
-
-    #Exibindo todos os usuarios na tabela usuarios do banco de dados
-    print("\nListando usuarios encontrados: ")
-    lista_usuarios = service.listar_todos_usuarios()
-    for usuario in lista_usuarios:
-        print(f"\nNome: {usuario.nome}  \nemail: {usuario.email}  \nsenha: {usuario.senha}")
 
 if __name__ == "__main__":
     os.system("cls || clear")
