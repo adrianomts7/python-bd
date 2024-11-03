@@ -49,8 +49,8 @@ class UsuarioService:
                 usuario.nome = nomeAtualizado
                 usuario.email = emailAtualizado
                 usuario.senha = senhaAtualizada
-                print("Usuario Atualizado com sucesso!")
                 self.repository.session.commit()
+                print("Usuario Atualizado com sucesso!")
                 
         except TypeError as erro:
             print(f"Erro ao tentar atualizar usuario: {erro}")
@@ -70,4 +70,4 @@ class UsuarioService:
             print(f"Erro ao apagar usuario: {erro}")
             
         except Exception as erro:
-            print(f"Ocorreu um erro inesperado: {erro}")
+            print(f"Ocorreu um erro inesperado: {erro}")   
