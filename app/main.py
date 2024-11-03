@@ -37,8 +37,8 @@ def main():
             case 2:
                 os.system("cls || clear")
                 
-                emailProcurar = input("Digite o email do usuario que deseja procurar: ")
-                service.procurar_usuario(email=emailProcurar)
+                email = input("Digite o email do usuario que deseja procurar: ")
+                service.procurar_usuario(email=email)
                 
                 continue
                 
@@ -58,7 +58,6 @@ def main():
                 os.system("clear || cls")
                 
                 email = input("Digite o email do usuario que vai apagar: ")
-    
                 service.excluir_usuario(email=email)
                 
                 continue
